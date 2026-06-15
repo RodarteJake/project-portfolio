@@ -1,0 +1,139 @@
+---
+permalink: /index.html
+layout: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jake Rodarte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container container">
+            <a href="#home" class="nav-logo">Jake Rodarte</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Hi, I'm Jake</h1>
+            <p>I build systems that help people be more productive and video games that ruin all that productivity.</p>
+            <button class="cta-button" type="button">Contact Me</button>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I'm a full stack developer with a passion for creating software solutions that can be used to enhance people's daily lives.</p>
+            <div class="skills">
+                <div class="skill-item">
+                    <h3>Web Design</h3>
+                    <p>Crafting layouts using modern CSS techniques and responsive JavaScript designs.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Backend Development</h3>
+                    <p>Building robust and scalable database-driven applications using SQL and Python.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Godot</h3>
+                    <p>Creating 2D and 3D games with the Godot engine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <h3>Pokemon TCG Tracker</h3>
+                    <p>A webapp for tracking Pokemon Trading Card Game collections with a search-driven acquisition flow.</p>
+                    <a class="project-link" href="https://pokemon-tcg-tracker.fly.dev/" target="_blank" rel="noreferrer">Live Website</a>
+                    <a class="project-link" href="https://github.com/RodarteJake/pokemon-tcg-tracker" target="_blank" rel="noreferrer">GitHub</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"></div>
+                    <h3>Project Simba</h3>
+                    <p>A wave-based zombie survival shooter built with the Godot engine.</p>
+                    <a class="project-link" href="https://github.com/RodarteJake/project-simba" target="_blank" rel="noreferrer">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>Recent Blog Posts</h2>
+            <div class="recent-posts-grid">
+                {% set recentPostList = collections.posts | recentPosts(3) %}
+                {% for post in recentPostList %}
+                <div class="recent-post-card">
+                    <h3><a href="{{ post.url }}" class="recent-post-link">{{ post.data.title }}</a></h3>
+                    <div class="recent-post-meta">
+                        <span class="recent-post-date">{{ post.data.date | dateFilter }}</span>
+                    </div>
+                    <p class="recent-post-excerpt">{{ post.content | excerpt }}</p>
+                    <a href="{{ post.url }}" class="read-more-link">Read More →</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="blog-section-footer">
+                <a href="blog/" class="view-more-posts">View More Posts →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <form
+                id="contact-form"
+                class="contact-form"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+            >
+                <input type="hidden" name="access_key" value="187a7957-e2be-42fe-a7df-3e6ccf68af7b" />
+                <input type="hidden" name="subject" value="New message from portfolio website" />
+                <input type="hidden" name="botcheck" value="" />
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-button">Send Message</button>
+                <div class="contact-form-feedback" aria-live="polite"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <p>Made with HTML, CSS, and JavaScript.</p>
+            <div class="social-links">
+                <a class="social-link" href="https://github.com/RodarteJake">GitHub</a>
+                <a class="social-link" href="https://www.linkedin.com/in/jacob-rodarte-a1a435407/">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

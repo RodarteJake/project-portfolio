@@ -1,0 +1,74 @@
+---
+permalink: /blog/index.html
+layout: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Jake Rodarte</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container container">
+            <a href="../index.html" class="nav-logo">Jake Rodarte</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href=".">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation menu" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Blog</h1>
+            <p>Thoughts on development, design, and digital products.</p>
+        </div>
+    </section>
+
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-grid">
+                {% for post in collections.posts %}
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <h2><a href="{{ post.url }}" class="post-title-link">{{ post.data.title }}</a></h2>
+                        <div class="blog-meta">
+                            <span class="blog-date">{{ post.data.date | dateFilter }}</span>
+                            {% if post.data.author %}<span class="blog-author">by {{ post.data.author }}</span>{% endif %}
+                        </div>
+                    </div>
+                    <p class="blog-excerpt">{{ post.content | excerpt }}</p>
+                    <a href="{{ post.url }}" class="read-more">Read More →</a>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <p>Made with HTML, CSS, and JavaScript.</p>
+            <div class="social-links">
+                <a class="social-link" href="https://github.com/RodarteJake">GitHub</a>
+                <a class="social-link" href="https://www.linkedin.com/in/jacob-rodarte-a1a435407/">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../scripts/main.js"></script>
+</body>
+</html>
+
