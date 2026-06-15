@@ -49,7 +49,7 @@ module.exports = function(eleventyConfig) {
     });
 
     return {
-        pathPrefix: "/project-portfolio/",
+        pathPrefix: "/",
         dir: {
             input: ".",
             output: "_site",
