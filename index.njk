@@ -88,12 +88,12 @@ layout: false
                 {% set recentPostList = collections.posts | recentPosts(3) %}
                 {% for post in recentPostList %}
                 <div class="recent-post-card">
-                    <h3><a href="{{ post.url }}" class="recent-post-link">{{ post.data.title }}</a></h3>
+                    <h3><a href="{{ post.url | url }}" class="recent-post-link">{{ post.data.title }}</a></h3>
                     <div class="recent-post-meta">
                         <span class="recent-post-date">{{ post.data.date | dateFilter }}</span>
                     </div>
                     <p class="recent-post-excerpt">{{ post.content | excerpt }}</p>
-                    <a href="{{ post.url }}" class="read-more-link">Read More →</a>
+                    <a href="{{ post.url | url }}" class="read-more-link">Read More →</a>
                 </div>
                 {% endfor %}
             </div>
