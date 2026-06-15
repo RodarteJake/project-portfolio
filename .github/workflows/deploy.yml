@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]     
+  workflow_dispatch:     
+
+permissions:               
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # pull your repo onto the runner
+      - uses: actions/setup-node@v4        # install Node (the runtime, same as on your machine)
+        with:
+          node-version: 20
+      - run: npm ci                        # install deps from package-lock.json
+      - run: npx @11ty/eleventy            # THE build — produces _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site                      # hand the built output to Pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4
