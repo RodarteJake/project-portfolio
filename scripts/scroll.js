@@ -35,7 +35,7 @@ export function initSmoothScrollAndActiveNav() {
 
                 if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                     document.querySelectorAll('.nav-link').forEach(l => l.style.color = 'var(--text-dark)');
-                    link.style.color = 'var(--primary-color)';
+                    link.style.color = 'var(--accent-color)';
                 }
             }
         });
