@@ -39,6 +39,11 @@
 
     /* Composite */
     --hero-gradient: linear-gradient(135deg, #0b2254 0%, #163d83 55%, #255cc0 100%);
+
+    /* Fonts (second item in each stack is the fallback if the web font fails to load) */
+    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-heading: 'Sora', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 html {
@@ -46,10 +51,14 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
     color: var(--text-main);
     background-color: var(--bg-base);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
 }
 
 .container {
@@ -671,7 +680,7 @@ body {
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     color: var(--primary-light);
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-mono);
 }
 
 .post-body pre {
